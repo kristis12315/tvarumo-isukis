@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Transportation Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Transportation Program</h1>
+
+    <form method="POST" action="/signup">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <h2>Leaderboard</h2>
+
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Participant</th>
+            <th>Points</th>
+            <th>Bike (km)</th>
+            <th>Scooter (km)</th>
+            <th>Walk (km)</th>
+        </tr>
+        {% for participant in leaderboard %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ participant.name }}</td>
+            <td>{{ participant.points }}</td>
+            <td>{{ participant.kilometers.bike }}</td>
+            <td>{{ participant.kilometers.scooter }}</td>
+            <td>{{ participant.kilometers.walk }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
